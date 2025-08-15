@@ -11,3 +11,12 @@ function fun(x) {
 fun(1);
 
 ////////////
+
+// x to 1
+
+function fun(n) {
+  if (n < 1) return;
+  console.log(n);
+  fun(--n);
+}
+fun(10);
