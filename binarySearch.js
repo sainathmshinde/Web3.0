@@ -1,70 +1,35 @@
-/* const binSearch = (arr, value, low = 0, high = arr.length - 1, count) => {
-  //if already exists
-  if (low <= high) {
-    //print the no. of times function called
+// leetcode 704
+// binary search
+/**
+ Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
 
-    console.log(count++);
+Example 1:
 
-    //get mid
-    const mid = Math.ceil((low + high) / 2);
-
-    //if element found
-    //return index
-    if (value === arr[mid]) {
-      return mid;
-    }
-    //if value is less than mid then search in lower range
-
-    if (value < arr[mid]) {
-      return binSearch(arr, value, low, mid - 1, count);
-    } else {
-      //else value is greater than mid
-      return binSearch(arr, value, mid + 1, high, count);
-    }
-  }
-  //if ot found
-  return -1;
-};
-
-//Input
-let arr = [];
-for (let i = 1; i <= 1000000; i++) {
-  arr.push(i);
-}
-
-console.log(binSearch(arr, 231232));
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
  */
 
-const leftMost = (arr, value, low = 0, high = arr.length - 1, result) => {
-  //if already exists
-  if (low <= high) {
-    //print the no. of times function called
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
+  left = 0;
+  right = nums.length - 1;
 
-    console.log(result);
-
-    //get mid
-    const mid = Math.ceil((low + high) / 2);
-
-    //if element found
-    //return index
-    if (value === arr[mid]) {
-      result = mid;
-      leftMost(arr, value, low, mid - 1, result);
-    }
-    //if value is less than mid then search in lower range
-
-    if (value < arr[mid]) {
-      return leftMost(arr, value, low, mid - 1, result);
+  while (right >= left) {
+    middle = Math.floor((left + right) / 2);
+    if (target === nums[middle]) {
+      return middle;
+    } else if (target < nums[middle]) {
+      right = middle - 1;
     } else {
-      //else value is greater than mid
-      return leftMost(arr, value, mid + 1, high, result);
+      left = middle + 1;
     }
   }
-  //if ot found
   return -1;
 };
-
-//Input
-const arr = [1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9, 10];
-
-console.log(leftMost(arr, 5));
