@@ -26,3 +26,29 @@ var sortArray = function (nums) {
   }
   return nums;
 };
+
+// time complexity is O(n2)
+
+// so optimize it by stop loop when tehre is no swapping happen in element of array
+
+let arr = [5, 1, 1, 2, 0, 0];
+
+function bubbleSort(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n - 1; i++) {
+    let isSwapped = false; // handling for swap not happend
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (aa[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+
+        isSwapped = true; // if happened return true
+      }
+    }
+    if (!isSwapped) break; // if not break the loop
+  }
+  return arr;
+}
+var result = bubbleSort(arr);
+console.log(result);
