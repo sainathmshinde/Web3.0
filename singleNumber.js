@@ -35,3 +35,12 @@ var singleNumber = function (nums) {
   }
   return [...seen][0];
 };
+
+// soution 2nd
+
+function singleNumber(nums) {
+  return nums.reduce((acc, x) => acc ^ x, 0);
+}
+
+// Why it works: a^a=0 , a^0=a . Time O(n), Space O(1).
+// Edge-cases: negative numbers are fine; 0 handled correctly.
